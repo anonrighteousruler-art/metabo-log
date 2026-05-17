@@ -1,0 +1,10 @@
+{
+  "name": "MetaboTrack AI",
+  "description": "An advanced pharmacokinetic and metabolic tracking engine that calculates chemical breakdown, resting metabolic rate, and monitors health interactions using AI-driven insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

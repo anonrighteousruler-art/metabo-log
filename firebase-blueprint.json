@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user physical details and health conditions for metabolic calculations.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "weight": { "type": "number", "description": "Weight in kg" },
+        "height": { "type": "number", "description": "Height in cm" },
+        "age": { "type": "integer" },
+        "gender": { "type": "string", "enum": ["male", "female", "other"] },
+        "healthConditions": { "type": "array", "items": { "type": "string" } },
+        "activityLevel": { "type": "string", "enum": ["sedentary", "light", "moderate", "active", "very_active"] },
+        "rmr": { "type": "number", "description": "Calculated Resting Metabolic Rate" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "weight", "height", "age", "gender"]
+    },
+    "SubstanceLog": {
+      "title": "Substance Log",
+      "description": "Record of ingested chemicals/drugs/food for breakdown tracking.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "dosage": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "enum": ["medication", "supplement", "food", "chemical"] },
+        "breakdownData": {
+          "type": "object",
+          "description": "AI estimated metabolic breakdown over time"
+        }
+      }
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "UserProfile",
+      "description": "Collection of user profiles."
+    },
+    "logs": {
+      "schema": "SubstanceLog",
+      "description": "Collection of substance ingestion logs per user."
+    }
+  }
+}
